@@ -18,6 +18,10 @@ public class HomeController {
     MessageRepository messageRepository;
 
     @RequestMapping("/")
+    public String index(){
+        return "index";
+    }
+    @RequestMapping("/list")
     public String listmessages(Model model) {
         model.addAttribute("message", messageRepository.findAll());
         return "list";
@@ -34,7 +38,7 @@ public class HomeController {
             return "messageform";
         }
         messageRepository.save(message);
-        return "redirect:/";
+        return "redirect:/list";
     }
 
     @RequestMapping("/detail/{id}")
