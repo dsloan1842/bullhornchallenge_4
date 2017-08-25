@@ -28,21 +28,22 @@
     </div>
 
     <p><a class="btn btn-default" href="/add">Add a Message</a></p><br />
-    <table class="table table-responsive">
-        <tr>
-            <th>Date</th>
-            <th>Sender</th>
-            <th>Action</th>
-        </tr>
-        <tr th:each="message : ${message}">
-            <td th:text="${message.posteddate}"></td>
-            <td th:text="${message.sentby}"></td>
-            <td>
-                <a class="btn btn-default btn-sm" th:href="@{/detail/{id}(id=${message.id})}">Details</a>
-            </td>
-        </tr>
-    </table>
 
+        <div th:each="message : ${message}">
+            <table class="table table-responsive">
+        <tr>
+            <td th:text="${message.content}"></td>
+        </tr>
+        <tr>
+            <td th:text="${message.sentby}"></td>
+        </tr>
+        <tr>
+           <td>
+                <a class="btn btn-default btn-sm" th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+           </td>
+        </tr>
+            </table>
+        </div>
 </div>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
